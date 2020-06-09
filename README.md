@@ -1,5 +1,3 @@
-## Learning Go and Concurrency
+## Concurrency in Go
 
-nil is the zero value for pointers, interfaces, maps, slices, channels and function types, representing an uninitialized value
-
-A nil value in the error position indicates that there was no error
+A goroutine is a lightweight thread managed by the Go runtime.
