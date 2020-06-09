@@ -38,16 +38,19 @@ func main() {
 	// explicit value init, go will know it's int type
 	numCorrect := 0
 	for i, problem := range problems {
+		fmt.Printf("Problem #%d: %s = ", i+1, problem.question)
+		answerChannel := make(chan string)
+		go func() {
+			var answer string
+			fmt.Scanf("%s\n", &answer)
+			answerChannel <- answer // send answer to the channel
+		}()
+
 		select {
 		case <-timer.C:
 			fmt.Printf("\nYou got %d out of %d questions correct!", numCorrect, len(problems))
 			return // using the break statement here would only break out of select
-		default:
-			fmt.Printf("Problem #%d: %s = ", i+1, problem.question)
-
-			// explicit type init, empty string
-			var answer string
-			fmt.Scanf("%s\n", &answer)
+		case answer := <-answerChannel:
 			if answer == problem.answer {
 				fmt.Println("Correct!")
 				numCorrect++
@@ -55,7 +58,6 @@ func main() {
 				fmt.Println("Incorrect!")
 			}
 		}
-
 	}
 
 	fmt.Printf("\nYou got %d out of %d questions correct!", numCorrect, len(problems))
