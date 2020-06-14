@@ -9,7 +9,7 @@ Usage of quiz_game.exe:
 ```
 
 ## Playing the Game
-What's great about Go is it's very easy to build and download binaries. Please download this binary and config your PATH appropriately to run the .exe file. Create your csv problem set and challenge yourself with a timer limit!
+What's great about Go is it's very easy to build and download binaries. Create your csv problem set and challenge yourself with a timer limit!
 
 ```sh
 github.com\DanielBL01\Go_Projects\quiz_game>quiz_game.exe -problems=problems.csv -Limit=5
